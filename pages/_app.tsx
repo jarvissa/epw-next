@@ -1,7 +1,14 @@
-import '../styles/globals.css'
-import type { AppProps } from 'next/app'
+import type { AppProps } from "next/app";
+import Chakra from "../components/Chakra";
+import Layout from "../components/Layout";
 
 function MyApp({ Component, pageProps }: AppProps) {
-  return <Component {...pageProps} />
+  return (
+    <Chakra cookies={pageProps.cookies}>
+      <Layout>
+        <Component {...pageProps} />
+      </Layout>
+    </Chakra>
+  );
 }
-export default MyApp
+export default MyApp;
