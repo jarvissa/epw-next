@@ -16,8 +16,10 @@ const Layout = ({ children }: PropsWithChildren<{}>) => {
           as: "aside",
           w: 14,
           minH: "calc(100vh - 32px)",
-          display: { base: "none", md: "flex" },
+          pos: "absolute",
           top: 0,
+          display: { base: "none", md: "flex" },
+          direction: "column",
         }}
       />
 

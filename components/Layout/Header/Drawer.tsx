@@ -1,6 +1,6 @@
+import ColorMode from "../../ColorMode";
 import NavLinkInterface from "../../../lib/interfaces/NavLinkInterface";
 import NextLink from "next/link";
-import { FaGithub } from "react-icons/fa";
 import {
   Flex,
   FlexProps,
@@ -10,8 +10,8 @@ import {
   useColorModeValue,
 } from "@chakra-ui/react";
 import { MotionLi, MotionUl } from "../../../lib/animation/components";
-import { useState } from "react";
 import { useRouter } from "next/router";
+import { useState } from "react";
 
 type NavDrawerProps = {
   links: NavLinkInterface[];
@@ -29,9 +29,7 @@ const NavDrawer = ({ links, flexProps }: NavDrawerProps) => {
 
   return (
     <Flex
-      pos={{ base: "relative", md: "absolute" }}
       justify="space-between"
-      direction={{ md: "column" }}
       bgColor={useColorModeValue("epw.50", "epw.700")}
       {...flexProps}
     >
@@ -65,24 +63,19 @@ const NavDrawer = ({ links, flexProps }: NavDrawerProps) => {
                 }}
                 onClick={() => setActiveLink(link.key)}
               >
-                <Icon as={link.icon} fontSize="3xl" />
+                <Icon as={link.icon} fontSize={{ base: "2xl", md: "3xl" }} />
               </Link>
             </NextLink>
           </MotionLi>
         ))}
       </MotionUl>
 
-      <NextLink href="https://github.com/jarvissa" passHref>
-        <Link
-          isExternal
-          p={3}
-          textAlign="center"
-          _hover={{ bgColor: colorMode === "dark" ? "epw.800" : "epw.100" }}
-          _focus={{}}
-        >
-          <Icon as={FaGithub} boxSize={8}></Icon>
-        </Link>
-      </NextLink>
+      <ColorMode
+        mr={{ base: 2, md: 0 }}
+        mb={{ md: 2 }}
+        outline="none"
+        fontSize="2xl"
+      />
     </Flex>
   );
 };
